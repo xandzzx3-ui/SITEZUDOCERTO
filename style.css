@@ -1,0 +1,301 @@
+/* Paleta de Cores (Mantida) */
+:root {
+    --bg-light-pink: #fbebee;
+    --soft-pink: #e7b6c7;
+    --dark-rose: #884a5e;
+    --dark-brown: #4e342e;
+}
+
+/* Configuração Geral */
+body {
+    font-family: 'League Spartan', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+    color: var(--dark-rose);
+    position: relative;
+    z-index: 1;
+    background-color: var(--bg-light-pink);
+}
+
+/* Fundo principal com Gradiente Animado */
+.background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--bg-light-pink) 0%, var(--soft-pink) 100%);
+    z-index: -1;
+    animation: gradient-animation 15s ease infinite;
+    background-size: 200% 200%;
+    overflow: hidden; /* Importante para o efeito de decoração */
+}
+
+@keyframes gradient-animation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* --- DECORAÇÃO: Efeito de Corações Flutuantes --- */
+.background-animation::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Cria um padrão de corações usando SVG Data URI */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23E7B6C7' fill-opacity='0.4' d='M50,10 A20,20 0 0,1 50,40 A20,20 0 0,1 50,10 Z M50,10 L50,80 L20,40 L50,10 Z' transform='rotate(45 50 50)' /%3E%3C/svg%3E");
+    
+    background-size: 100px 100px; /* Tamanho do padrão */
+    opacity: 0.5; /* Suavidade */
+    animation: move-background 60s linear infinite;
+    transform: scale(3); /* Aumenta o padrão para ter um efeito de flutuação mais amplo */
+}
+
+/* Animação para mover lentamente o padrão de corações */
+@keyframes move-background {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
+}
+/* --- FIM DA DECORAÇÃO --- */
+
+
+/* Conteúdo principal - para ficar acima do fundo animado */
+main, header, footer {
+    position: relative;
+    z-index: 2;
+    background-color: transparent;
+}
+
+/* --- AJUSTES DO HEADER E CONTROLE DE MÚSICA (Mantidos) --- */
+header {
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+.header-content {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h1 {
+    font-size: 3.5em;
+    color: var(--dark-rose);
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+.music-control {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 18px;
+    background-color: #ffffff;
+    border: 1px solid var(--soft-pink);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(136, 74, 94, 0.15);
+}
+#volume-icon {
+    font-size: 1.6em;
+    color: var(--dark-rose);
+    cursor: pointer;
+}
+#volume-slider {
+    width: 120px;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    background: var(--soft-pink);
+    border-radius: 3px;
+    outline: none;
+    opacity: 0.8;
+    transition: opacity .2s;
+}
+#volume-slider:hover {
+    opacity: 1;
+}
+#volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%; 
+    background: var(--dark-rose);
+    cursor: pointer;
+}
+@media (max-width: 900px) {
+    .music-control {
+        position: relative;
+        top: 0;
+        right: 0;
+        margin-bottom: 20px;
+    }
+}
+/* FIM AJUSTES DO HEADER PARA MÚSICA */
+
+footer {
+    margin-top: 50px;
+    font-size: 1em;
+    padding: 10px;
+}
+.intro-text {
+    font-size: 1.2em;
+    font-weight: 400;
+}
+
+/* --- FRASES SUPERIORES (Mantido) --- */
+.love-phrases {
+    max-width: 900px;
+    margin: 60px auto;
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+}
+.phrase {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 20px;
+    font-size: 1.4em;
+    font-weight: 700;
+    border: 1px solid var(--soft-pink);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(136, 74, 94, 0.1);
+    transition: all 0.3s ease-in-out;
+    color: var(--dark-brown);
+}
+.phrase:hover {
+    transform: translateY(-5px);
+    border-color: var(--dark-rose);
+    box-shadow: 0 8px 15px rgba(136, 74, 94, 0.2);
+}
+
+/* --- CARTAS (Mantido o Efeito de Zoom/Revelação) --- */
+.photos-as-cards-section h2 {
+    font-size: 2.5em;
+    margin-top: 60px;
+    margin-bottom: 40px;
+    color: var(--dark-rose);
+}
+.photo-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto 80px auto;
+    padding: 0 20px;
+}
+.photo-card {
+    height: 300px;
+    width: 100%;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 8px 15px rgba(136, 74, 94, 0.2);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.photo-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 12px 20px rgba(136, 74, 94, 0.3);
+}
+.photo-card-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.4s ease-in-out;
+}
+.photo-card-front {
+    background-color: var(--soft-pink);
+    color: var(--dark-brown);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    border: 2px solid var(--dark-rose);
+    border-radius: 8px;
+    z-index: 2;
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+.photo-card-back {
+    background-color: #ffffff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--dark-rose);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 1;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+.photo-card-front .card-text {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--dark-brown);
+    margin: 0;
+}
+.photo-card-back img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.photo-card.open .photo-card-front {
+    opacity: 0;
+    transform: scale(1.2);
+    pointer-events: none;
+}
+.photo-card.open .photo-card-back {
+    opacity: 1;
+    transform: scale(1);
+}
+/* EFEITO LAÇO NO CANTO SUPERIOR */
+.photo-card-front::before,
+.photo-card-front::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 30px;
+    top: -1px;
+    right: -1px;
+    z-index: 10;
+    transform-origin: top right;
+}
+.photo-card-front::before {
+    transform: rotate(45deg);
+    right: 15px;
+    height: 25px;
+    width: 25px;
+    background: var(--soft-pink);
+    border-radius: 50% 0 50% 0;
+}
+.photo-card-front::after {
+    transform: rotate(-45deg);
+    right: -5px;
+    height: 25px;
+    width: 25px;
+    background: var(--dark-rose);
+    border-radius: 50% 50% 0 0;
+    top: 5px;
+}
